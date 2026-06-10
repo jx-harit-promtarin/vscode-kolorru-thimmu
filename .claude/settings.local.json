@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(mkdir \"e:\\\\J\\\\vs-code-extensions\\\\kolorru-thimmu\\\\.vscode\")",
+      "Bash(code --extensionDevelopmentPath=\"e:\\\\J\\\\vs-code-extensions\\\\kolorru-thimmu\")",
+      "Bash(Get-ChildItem -Path \"C:\\\\Program Files\\\\Microsoft VS Code\" -Recurse -Filter \"workbench.desktop.main.html\" -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Read(//c/Program Files/Microsoft VS Code/**)",
+      "Bash(npm uninstall *)",
+      "Bash(Remove-Item \"e:\\\\J\\\\vs-code-extensions\\\\kolorru-thimmu\\\\src\\\\colorServer.ts\")",
+      "Bash(node -e ' *)"
+    ],
+    "additionalDirectories": [
+      "e:\\J\\vs-code-extensions\\kolorru-thimmu"
+    ]
+  }
+}

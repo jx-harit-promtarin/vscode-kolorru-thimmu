@@ -1,0 +1,175 @@
+{
+  "name": "kolorru-thimmu",
+  "displayName": "Kolorru Thimmu",
+  "description": "Dynamic rainbow color theme — animate your VS Code UI colors in real time",
+  "version": "0.1.0",
+  "publisher": "kolorru",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes",
+    "Other"
+  ],
+  "keywords": [
+    "color",
+    "theme",
+    "rainbow",
+    "animate",
+    "dynamic"
+  ],
+  "icon": "images/icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "kolorru.start",
+        "title": "Kolorru: Start Rainbow",
+        "icon": "$(play)"
+      },
+      {
+        "command": "kolorru.stop",
+        "title": "Kolorru: Stop Rainbow",
+        "icon": "$(debug-stop)"
+      },
+      {
+        "command": "kolorru.configure",
+        "title": "Kolorru: Open Settings"
+      },
+      {
+        "command": "kolorru.pickPreset",
+        "title": "Kolorru: Pick Color Preset"
+      },
+      {
+        "command": "kolorru.startRandom",
+        "title": "Kolorru: Start Random Colors",
+        "icon": "$(symbol-color)"
+      },
+      {
+        "command": "kolorru.enableOverlay",
+        "title": "Kolorru: Enable Overlay (patch workbench)"
+      },
+      {
+        "command": "kolorru.disableOverlay",
+        "title": "Kolorru: Disable Overlay (unpatch workbench)"
+      }
+    ],
+    "configuration": {
+      "title": "Kolorru Thimmu",
+      "properties": {
+        "kolorru.intervalMs": {
+          "type": "number",
+          "default": 80,
+          "minimum": 16,
+          "maximum": 5000,
+          "description": "Milliseconds between each color step. Lower = faster animation."
+        },
+        "kolorru.hueStep": {
+          "type": "number",
+          "default": 1,
+          "minimum": 0.1,
+          "maximum": 30,
+          "description": "How many degrees the hue advances per step (1 = smooth, 10 = fast jump)."
+        },
+        "kolorru.saturation": {
+          "type": "number",
+          "default": 75,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Color saturation percentage (0 = grey, 100 = vivid)."
+        },
+        "kolorru.lightness": {
+          "type": "number",
+          "default": 45,
+          "minimum": 10,
+          "maximum": 90,
+          "description": "Color lightness percentage (0 = black, 100 = white)."
+        },
+        "kolorru.hueRange": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 360
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "default": [
+            0,
+            360
+          ],
+          "description": "Hue range [min, max] to cycle through. Default [0,360] = full rainbow. E.g. [200,280] = blue→purple only."
+        },
+        "kolorru.targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "activityBar.background",
+            "statusBar.background",
+            "titleBar.activeBackground"
+          ],
+          "description": "workbench.colorCustomizations keys to animate. See VS Code Theme Color Reference for all available keys."
+        },
+        "kolorru.startOnLaunch": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically start the rainbow animation when VS Code opens."
+        },
+        "kolorru.mode": {
+          "type": "string",
+          "enum": [
+            "rainbow",
+            "random"
+          ],
+          "enumDescriptions": [
+            "Smoothly cycle through hues in order (violet→blue→green→yellow→orange→red→loop)",
+            "Jump to a random hue within hueRange on every tick"
+          ],
+          "default": "rainbow",
+          "description": "Animation mode: ordered rainbow cycle or random color jumps."
+        },
+        "kolorru.randomizeSL": {
+          "type": "boolean",
+          "default": false,
+          "description": "In random mode, also randomize saturation and lightness within ±15% of the configured values."
+        },
+        "kolorru.method": {
+          "type": "string",
+          "enum": [
+            "colorCustomizations",
+            "overlay"
+          ],
+          "enumDescriptions": [
+            "Use workbench.colorCustomizations API — changes specific UI element colors (no restart needed)",
+            "Inject a full-screen rgba overlay via CSS into the workbench DOM (requires Enable Overlay + restart)"
+          ],
+          "default": "colorCustomizations",
+          "description": "How Kolorru applies color. 'overlay' covers the entire VS Code window like a color filter."
+        },
+        "kolorru.overlayOpacity": {
+          "type": "number",
+          "default": 0.25,
+          "minimum": 0.01,
+          "maximum": 0.95,
+          "description": "Opacity of the overlay layer (0.0 = invisible, 1.0 = fully opaque). Only used when method is 'overlay'."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.4.0"
+  }
+}
