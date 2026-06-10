@@ -231,7 +231,3 @@ In [src/extension.ts](src/extension.ts), add an entry to the `PRESETS` array:
 ```
 
 ---
-
-## License
-
-MIT

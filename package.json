@@ -1,10 +1,15 @@
 {
   "name": "kolorru-thimmu",
   "displayName": "Kolorru Thimmu",
-  "description": "Dynamic rainbow color theme — animate your VS Code UI colors in real time",
-  "version": "0.1.0",
-  "publisher": "kolorru",
+  "description": "ダイナミックな虹色のテーマ — animate your VS Code UI colors in real time",
+  "version": "1.0.0",
+  "publisher": "shoujo-no-silhouette",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jx-harit-promtarin/vscode-kolorru-thimmu"
+  },
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -19,7 +24,6 @@
     "animate",
     "dynamic"
   ],
-  "icon": "images/icon.png",
   "activationEvents": [
     "onStartupFinished"
   ],
