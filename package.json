@@ -4,6 +4,7 @@
   "description": "Dynamic rainbow color theme — animate your VS Code UI colors in real time",
   "version": "0.1.0",
   "publisher": "kolorru",
+  "license": "Apache-2.0",
   "engines": {
     "vscode": "^1.80.0"
   },
